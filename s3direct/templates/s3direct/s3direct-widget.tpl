@@ -4,7 +4,7 @@
   <input class="csrf-cookie-name" type="hidden" value="{{ csrf_cookie_name }}">
   <input class="file-url" type="hidden" value="{{ file_url }}" id="{{ element_id }}" name="{{ name }}" />
   <input class="file-dest" type="hidden" value="{{ dest }}">
-  <input class="file-path" type="hidden" value="{{ path }}">
+  <input class="file-path" type="hidden" value="{{ path }}" name="path">
   <input class="file-input" type="file"  style="{{ style }}"/>
   <div class="progress progress-striped active">
     <div class="bar"></div>
