@@ -22,6 +22,7 @@ def get_upload_params(request):
     file_type = request.POST['type']
     file_size = int(request.POST['size'])
     dest = get_s3direct_destinations().get(request.POST['dest'])
+    path = request.POST.get('path')
     if not dest:
         return HttpResponseNotFound(json.dumps({'error': 'File destination does not exist.'}),
                                     content_type='application/json')
@@ -54,6 +55,9 @@ def get_upload_params(request):
         object_key = file_name
     else:
         object_key = '%s/%s' % (key.strip('/'), file_name)
+
+    if path:
+        object_key = '{}{}'.format(path.strip('/'), object_key)
 
     bucket = dest.get('bucket') or settings.AWS_STORAGE_BUCKET_NAME
     region = dest.get('region') or getattr(settings, 'S3DIRECT_REGION', None) or 'us-east-1'
