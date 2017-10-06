@@ -5981,6 +5981,7 @@ const SparkMD5 = require('spark-md5');
         const element             = event.target.parentElement,
               file                = element.querySelector('.file-input').files[0],
               dest                = element.querySelector('.file-dest').value,
+              path                = element.querySelector('.file-path').value,
               csrfTokenName       = element.querySelector('.csrf-cookie-name').value,
               destinationCheckUrl = element.getAttribute('data-policy-url'),
               signerUrl           = element.getAttribute('data-signing-url'),
@@ -5988,6 +5989,7 @@ const SparkMD5 = require('spark-md5');
               headers             = {'X-CSRFToken': Cookies.get(csrfTokenName)};
 
         form.append('dest', dest)
+        form.append('path', path)
         form.append('name', file.name)
         form.append('type', file.type)
         form.append('size', file.size)
