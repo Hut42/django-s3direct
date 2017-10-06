@@ -30,7 +30,7 @@ class S3DirectWidget(widgets.TextInput):
         self.dest = kwargs.pop('dest', None)
         self.path = None
         if 'path' in kwargs:
-            self.path = kwargs.pop('path', None)
+            self.path = kwargs.pop('path', '')
         super(S3DirectWidget, self).__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None, **kwargs):
